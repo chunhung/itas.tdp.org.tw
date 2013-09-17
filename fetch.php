@@ -1,6 +1,6 @@
 <?php
 
-foreach ($i = 0; $i < 3000; $i ++) {
+for ($i = 0; $i < 3000; $i ++) {
     $url = 'http://itas.tdp.org.tw/content/application/itas/plan_apply/guest-cnt-browse.php?cnt_id=' . $i;
     error_log($url);
     $curl = curl_init($url);
@@ -50,5 +50,5 @@ foreach ($i = 0; $i < 3000; $i ++) {
             $ret[$tr_dom->getElementsByTagName('td')->item(1)->nodeValue] = $tr_dom->getElementsByTagName('td')->item(2)->nodeValue;
         }
     }
-    file_put_contents(__DIR__ . '/outputs/' . $i . '.json', json_encode($ret));
+    file_put_contents(__DIR__ . '/outputs/' . $i . '.json', json_encode($ret, JSON_UNESCAPED_UNICODE));
 }
